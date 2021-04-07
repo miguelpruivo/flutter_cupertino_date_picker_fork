@@ -12,23 +12,23 @@ class DatePickerTitleWidget extends StatelessWidget {
   DatePickerTitleWidget(
     this.onCancel,
     this.onConfirm, {
-    Key key,
+    Key? key,
     this.pickerTheme,
     this.locale,
   }) : super(key: key);
 
-  final DateTimePickerTheme pickerTheme;
-  final DateTimePickerLocale locale;
+  final DateTimePickerTheme? pickerTheme;
+  final DateTimePickerLocale? locale;
   final DateVoidCallback onCancel, onConfirm;
 
   @override
   Widget build(BuildContext context) {
-    if (pickerTheme.title != null) {
-      return pickerTheme.title;
+    if (pickerTheme!.title != null) {
+      return pickerTheme!.title!;
     }
     return Container(
-      height: pickerTheme.titleHeight,
-      decoration: BoxDecoration(color: pickerTheme.backgroundColor),
+      height: pickerTheme!.titleHeight,
+      decoration: BoxDecoration(color: pickerTheme!.backgroundColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -43,14 +43,14 @@ class DatePickerTitleWidget extends StatelessWidget {
   Widget _renderCancelWidget(BuildContext context) {
     if (isCustomTitleWidget()) {
       // has custom title button widget
-      if (pickerTheme.cancel == null) {
+      if (pickerTheme!.cancel == null) {
         return Offstage();
       }
     }
 
-    Widget cancelWidget = pickerTheme.cancel;
+    Widget? cancelWidget = pickerTheme!.cancel;
     if (cancelWidget == null) {
-      TextStyle textStyle = pickerTheme.cancelTextStyle ??
+      TextStyle textStyle = pickerTheme!.cancelTextStyle ??
           TextStyle(
             color: Theme.of(context).unselectedWidgetColor,
             fontSize: 16.0,
@@ -62,7 +62,7 @@ class DatePickerTitleWidget extends StatelessWidget {
     }
 
     return Container(
-      height: pickerTheme.titleHeight,
+      height: pickerTheme!.titleHeight,
       child: TextButton(
         child: cancelWidget,
         onPressed: () => this.onCancel(),
@@ -74,14 +74,14 @@ class DatePickerTitleWidget extends StatelessWidget {
   Widget _renderConfirmWidget(BuildContext context) {
     if (isCustomTitleWidget()) {
       // has custom title button widget
-      if (pickerTheme.confirm == null) {
+      if (pickerTheme!.confirm == null) {
         return Offstage();
       }
     }
 
-    Widget confirmWidget = pickerTheme.confirm;
+    Widget? confirmWidget = pickerTheme!.confirm;
     if (confirmWidget == null) {
-      TextStyle textStyle = pickerTheme.confirmTextStyle ??
+      TextStyle textStyle = pickerTheme!.confirmTextStyle ??
           TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 16.0,
@@ -93,7 +93,7 @@ class DatePickerTitleWidget extends StatelessWidget {
     }
 
     return Container(
-      height: pickerTheme.titleHeight,
+      height: pickerTheme!.titleHeight,
       child: TextButton(
         child: confirmWidget,
         onPressed: () => this.onConfirm(),
@@ -102,8 +102,8 @@ class DatePickerTitleWidget extends StatelessWidget {
   }
 
   bool isCustomTitleWidget() {
-    return pickerTheme.cancel != null ||
-        pickerTheme.confirm != null ||
-        pickerTheme.title != null;
+    return pickerTheme!.cancel != null ||
+        pickerTheme!.confirm != null ||
+        pickerTheme!.title != null;
   }
 }
