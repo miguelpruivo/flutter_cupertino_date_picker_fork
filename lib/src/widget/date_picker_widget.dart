@@ -206,6 +206,13 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
           itemExtent: widget.pickerTheme!.itemHeight,
           onSelectedItemChanged: valueChanged,
           childCount: valueRange.last - valueRange.first + 1,
+          selectionOverlay: Column(
+            children: [
+              const Divider(),
+              const Spacer(),
+              const Divider(),
+            ],
+          ),
           itemBuilder: (context, index) => _renderDatePickerItemComponent(valueRange.first + index, format),
         ),
       ),

@@ -264,6 +264,13 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
       child: CupertinoPicker.builder(
         backgroundColor: widget.pickerTheme!.backgroundColor,
         scrollController: scrollCtrl,
+        selectionOverlay: Column(
+          children: [
+            const Divider(),
+            const Spacer(),
+            const Divider(),
+          ],
+        ),
         itemExtent: widget.pickerTheme!.itemHeight,
         onSelectedItemChanged: valueChanged,
         childCount: format.contains('m') ? _calculateMinuteChildCount(valueRange, minuteDivider) : valueRange!.last - valueRange.first + 1,

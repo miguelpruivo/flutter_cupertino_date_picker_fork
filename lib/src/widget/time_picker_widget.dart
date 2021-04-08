@@ -210,6 +210,13 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
         height: widget.pickerTheme!.pickerHeight,
         decoration: BoxDecoration(color: widget.pickerTheme!.backgroundColor),
         child: CupertinoPicker.builder(
+          selectionOverlay: Column(
+            children: [
+              const Divider(),
+              const Spacer(),
+              const Divider(),
+            ],
+          ),
           backgroundColor: widget.pickerTheme!.backgroundColor,
           scrollController: scrollCtrl,
           itemExtent: widget.pickerTheme!.itemHeight,
